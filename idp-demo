@@ -1,0 +1,29 @@
+#! IDP-Z3 0.6.1
+
+vocabulary V {
+    type AcademicStaff constructed from {Joost,Benjamin,Erem,Simon,Benedicte}
+    type LectureTime constructed from {morning,afternoon,evening}
+    type LectureName constructed from {LectureOne,LectureTwo,LectureThree,LectureFour,LectureFive,LectureSix,LectureSeven}
+    type Days constructed from {Monday,Tuesday,Wednesday,Thursday,Friday}
+
+
+type Lecture constructed from {LectureOne_Joost_monday_morning,LectureTwo_Benjamin_wednesday_afternoon}
+
+    academic_staff_of(Lecture): AcademicStaff
+    time_of(Lecture): LectureTime
+    name_of(Lecture): LectureName
+    day_of(Lecture): Days
+
+    Selected(Lecture)
+
+
+}
+
+theory T:V {
+   
+}
+
+structure S:V {
+
+
+}
