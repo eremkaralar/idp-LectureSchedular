@@ -1,22 +1,35 @@
 
 vocabulary V {
-    type AcademicStaff := {Joost,Benjamin,Erem,Simon,Benedicte}
-    type LectureTime := {morning,afternoon,evening}
+    type AcademicStaff := {Joost,Benjamin,Erem}
+    type Lecturemoment := {Monday_morning,Monday_afternoon,Monday_evening,Tuesday_morning,Tuesday_afternoon,Tuesday_evening,Wednesday_morning,Wednesday_afternoon,Wednesday_evening,Thursday_morning,Thursday_afternoon,Thursday_evening,Friday_morning,Friday_afternoon,Friday_evening}
     type LectureName := {LectureOne,LectureTwo,LectureThree,LectureFour,LectureFive,LectureSix,LectureSeven}
-    type Days := {Monday,Tuesday,Wednesday,Thursday,Friday}
-    working : AcademicStaff*LectureTime*Days →𝔹
-    
-    
 
 
+    isfree : AcademicStaff*Lecturemoment →𝔹
+    courstimes: LectureName →ℤ
+    teacher: LectureName →AcademicStaff
+    sheduled: AcademicStaff*Lecturemoment*LectureName →𝔹
+    timesplanned: LectureName →ℤ
 
 }
 
 theory T:V {
-   
+    ∀l: courstimes(l) >=0.
+    ∀p,t,l: sheduled(p,t,l) ⇔ isfree(p,t) ∧ timesplanned(l)<courstimes(l).
+    //∀p,t,l: sheduled(p,t,l) ⇒ timesplanned(l)+1.
+    ∀l: timesplanned(l)=courstimes(l).
+    ∀p,t,l: sheduled(p,t,l)
+ 
+
 }
 
 structure S:V {
 
 
+}
+display {
+    heading('Courses', `courstimes, `teacher).
+    heading('Possible_working_moments', `isfree).
+    hide(`sheduled, `timesplanned).
+    view() = expanded.
 }
