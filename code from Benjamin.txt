@@ -1,0 +1,22 @@
+
+vocabulary V {
+    type AcademicStaff := {Joost,Benjamin,Erem,Simon,Benedicte}
+    type LectureTime := {morning,afternoon,evening}
+    type LectureName := {LectureOne,LectureTwo,LectureThree,LectureFour,LectureFive,LectureSix,LectureSeven}
+    type Days := {Monday,Tuesday,Wednesday,Thursday,Friday}
+    working : AcademicStaff*LectureTime*Days →𝔹
+    
+    
+
+
+
+}
+
+theory T:V {
+   
+}
+
+structure S:V {
+
+
+}
