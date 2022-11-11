@@ -5,21 +5,29 @@ vocabulary V {
 
 
     isfree : AcademicStaff*Lecturemoment →𝔹
-    courstimes: LectureName →ℤ
-    teacher: LectureName →AcademicStaff
     sheduled: AcademicStaff*Lecturemoment*LectureName →𝔹
-    timesplanned : LectureName →ℤ
 
+    teacher: LectureName →AcademicStaff
+
+
+    timesplanned: LectureName -> ℤ
+    courstimes: LectureName →ℤ
 }
 
 theory T:V {
-    ∀l: courstimes(l) >=0 ∧timesplanned(l)>=0 ∧ courstimes(l)>=timesplanned(l).
-    ∀p,t,l: sheduled(p,t,l) ⇔ isfree(p,t) ∧ teacher(l)=p.
-    ∀p,t,l: sheduled(p,t,l) ⇒
-    //∀p,t,l, l2: sheduled(p,t,l) ⇔¬sheduled(p,t,l2).
     
- 
+    ∀l: #{ p in AcademicStaff,t in Lecturemoment: sheduled(p,t,l)} = timesplanned(l).
 
+    ∀l: courstimes(l) >=0 ∧timesplanned(l)>=0 .
+    ∀p,t,l: ¬sheduled(p,t,l) ⇐¬(teacher(l)=p).
+    ∀p,t,l: sheduled(p,t,l) ⇐ isfree(p,t) ∧ teacher(l)=p ∧ courstimes(l) > timesplanned(l).
+    ∀p,t,l: ¬sheduled(p,t,l) ⇐ ¬isfree(p,t) ∨ ¬(teacher(l)=p).
+    //∀p,t,l, l2: sheduled(p,t,l)⇒ ¬sheduled(p,t,l2).
+
+    //∀p,t,l: sheduled(p,t,l) ⇒coursplanned(l).
+    //{
+    //  !l in LectureName: sheduled(l) ⇒ (timesplanned(l)= timesplanned(l)+1).
+    //}
 }
 
 structure S:V {
@@ -27,8 +35,9 @@ structure S:V {
 
 }
 display {
-    heading('Courses', `courstimes, `teacher).
-    heading('Possible_working_moments', `isfree).
+    //heading('Courses', `courstimes, `teacher).  
+    heading('Possible_working_moments', `isfree, `courstimes, `teacher).
+    heading('Sheduling_table', `sheduled).
     hide(`timesplanned).
     view() = expanded.
 }
