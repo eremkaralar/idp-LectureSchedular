@@ -27,7 +27,7 @@ theory T:V {
     ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=4)⇒timesplanned(l)=5.
     ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=4)⇒timesplanned(l)=6.
 
-    #{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,LectureOne) } =timesplanned(LectureOne).s
+    #{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,LectureOne) } =timesplanned(LectureOne).
 }
 
 structure S:V {
@@ -36,6 +36,5 @@ structure S:V {
 display { 
     heading('Possible_working_moments', `isfree, `courstimes, `teacher).
     heading('Sheduling_table', `sheduled).
-    //hide(`timesplanned).
     view() = expanded.
 }
