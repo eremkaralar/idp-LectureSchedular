@@ -1,29 +1,34 @@
-#! IDP-Z3 0.6.1
-
 vocabulary V {
-    type AcademicStaff constructed from {Joost,Benjamin,Erem,Simon,Benedicte}
-    type LectureTime constructed from {morning,afternoon,evening}
-    type LectureName constructed from {LectureOne,LectureTwo,LectureThree,LectureFour,LectureFive,LectureSix,LectureSeven}
-    type Days constructed from {Monday,Tuesday,Wednesday,Thursday,Friday}
+    type AcademicStaff := {Joost,Benjamin,Erem}
+    type Lecturemoment := {Monday_morning,Monday_afternoon,Monday_evening,Tuesday_morning,Tuesday_afternoon,Tuesday_evening,Wednesday_morning,Wednesday_afternoon,Wednesday_evening,Thursday_morning,Thursday_afternoon,Thursday_evening,Friday_morning,Friday_afternoon,Friday_evening}
+    type LectureName := {LectureOne,LectureTwo,LectureThree,LectureFour,LectureFive,LectureSix,LectureSeven}
+    type count := {0..6}
+
+    isfree : AcademicStaff*Lecturemoment →𝔹
+    sheduled: AcademicStaff*Lecturemoment*LectureName →𝔹
+
+    teacher: LectureName →AcademicStaff
 
 
-type Lecture constructed from {LectureOne_Joost_monday_morning,LectureTwo_Benjamin_wednesday_afternoon}
-
-    academic_staff_of(Lecture): AcademicStaff
-    time_of(Lecture): LectureTime
-    name_of(Lecture): LectureName
-    day_of(Lecture): Days
-
-    Selected(Lecture)
-
-
+    timesplanned: LectureName -> count
+    courstimes: LectureName →count
 }
 
 theory T:V {
-   
+    ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=0)⇒timesplanned(l)=1.
+    ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=1)⇒timesplanned(l)=2.
+    ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=2)⇒timesplanned(l)=3.
+    ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=3)⇒timesplanned(l)=4.
+    ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=4)⇒timesplanned(l)=5.
+    ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=4)⇒timesplanned(l)=6.
 }
 
 structure S:V {
 
-
+}
+display { 
+    heading('Possible_working_moments', `isfree, `courstimes, `teacher).
+    heading('Sheduling_table', `sheduled).
+    //hide(`timesplanned).
+    view() = expanded.
 }
