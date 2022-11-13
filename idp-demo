@@ -15,12 +15,19 @@ vocabulary V {
 }
 
 theory T:V {
+    ∀l: courstimes(l)>=timesplanned(l).
+    ∀l: courstimes(l)=0 ⇒timesplanned(l)=0.
+    ∀p,t,l: ¬sheduled(p,t,l) ⇐¬(teacher(l)=p).
+    ∀p,t,l: sheduled(p,t,l) ⇐ isfree(p,t) ∧ teacher(l)=p.
+    ∀p,t,l: ¬sheduled(p,t,l) ⇐ ¬isfree(p,t) ∨ ¬(teacher(l)=p).
     ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=0)⇒timesplanned(l)=1.
     ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=1)⇒timesplanned(l)=2.
     ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=2)⇒timesplanned(l)=3.
     ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=3)⇒timesplanned(l)=4.
     ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=4)⇒timesplanned(l)=5.
     ∀p,t,l: sheduled(p,t,l) ∧ (timesplanned(l)=4)⇒timesplanned(l)=6.
+
+    #{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,LectureOne) } =timesplanned(LectureOne).s
 }
 
 structure S:V {
