@@ -66,12 +66,13 @@ Evaluation & Discussion
 
 There are the following sections in the Interface, which the IDE automatically creates after code execution:
 
-	isfree: Demonstrates which academic staff is available for which particular time slot (i.e. Monday morning, Friday afternoon) to give lecture.
+isfree: Demonstrates which academic staff is available for which particular time slot (i.e. Monday morning, Friday afternoon) to give lecture.
 
 Courses Part;
-	courstime:  Timeslot requirement of each lecture.
-	teacher/academicstaff: Course/Academic staff matches can be seen.
-	scheduled: Finalized/Concluded scheduled of academic staff and lectures (if there are no inconsistency error) correspondingly.
+
+courstime:Timeslot requirement of each lecture.
+teacher/academicstaff: Course/Academic staff matches can be seen.
+scheduled: Finalized/Concluded scheduled of academic staff and lectures (if there are no inconsistency error) correspondingly.
 
 If domain experts indicate the constraints, users are able to make a schedule without conflict or overlapping. If any conflict occurs, they are able to investigate why such violation of constraint occured.
 
