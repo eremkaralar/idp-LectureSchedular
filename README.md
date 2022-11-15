@@ -40,8 +40,8 @@ Users/Domain Experts
 
 Expected Logical Inference Tasks
 
-	In the example there are 7 lectures with their dates which are given by academic staff.	
-Given 7 lectures, our team’s prototype is able to reason about lectures and staff, if they are match. Namely, the reasoning about lectures whether they are schedulable or academic staffs’ availability is the main expected logical inference task from our prototype model.
+	In the example there are 3 lectures with their dates which are given by academic staff.	
+Given 3 lectures, our team’s prototype is able to reason about lectures and staff, if they are match. Namely, the reasoning about lectures whether they are schedulable or academic staffs’ availability is the main expected logical inference task from our prototype model.
 
 ![Alt Text](https://github.com/eremkaralar/idp-LectureSchedular/blob/main/images/conflict_demo.gif)
 
