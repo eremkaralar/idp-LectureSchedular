@@ -2,11 +2,11 @@
 
 Introduction
 
-This report aims to explain the project which assigned for Applied AI: Academic Perpectives lecture, module of Applied Knowledge Representation. In the scope of project, team has planned to realize a lecture scheduling. Via IDP and FO(.) language, knowledge representation of example lecture scheduling has been explained and coded logically.
+This report aims to explain the project which assigned for Applied AI: Academic Perpectives lecture, module of Applied Knowledge Representation. In the scope of project, team has planned to realize a lecture scheduler. Via IDP and FO(.) language, knowledge representation of example lecture scheduling has been explained and coded logically.
 
 Situation
 
-In the example used, there are 3 lectures and 3 academic staff who are responsible for those lectures. According to Belgian worker law, there are 5 business days and 3 time slots (namely morning, afternoon and evening lectures) that academic staff are able to teach their lectures. Each lecture has their own course time indicating that how many time slots that a lecture is needed to be given. (I.e.: Lecture2 can have 2 slots needed to be given on Monday morning and Tuesday evening or on Friday evening and Thursday evening)). With given all the lectures and academic staffs, there are lectures, time slots and academic staff to be chosen.
+In the example used, there are 3 lectures and 3 academic staff who are responsible for those lectures. According to Belgian worker law, there are 5 business days and 3 time slots (namely morning, afternoon and evening lectures) that academic staff are able to teach their lectures. Each lecture has their own course time indicating that how many time slots that a lecture is needed to be given. (I.e.: Lecture2 can have 2 slots needed to be given on Monday morning and Tuesday evening or on Friday evening and Thursday evening). With given all the lectures and academic staffs, there are lectures, time slots and academic staff to be chosen.
 
 
 Good & Bad Situations
@@ -29,7 +29,7 @@ Domain Knowledge
 -	Academic staff must not give classes all day (morning, afternoon, evening at the same day).
 -	Lectures of academic staff must not overlap.
 -	Each lecture have a time slot that must be fulfilled.
--	Each lecture must be given the exact same date that they have been assigned.
+-	Each lecture must be given the exact amount of time slots that they have been assigned.
 
 
 Users/Domain Experts
