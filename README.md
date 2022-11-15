@@ -75,7 +75,7 @@ There are the following sections in the Interface, which the IDE automatically c
 
 - isfree: Demonstrates which academic staff is available for which particular time slot (i.e. Monday morning, Friday afternoon) to give lecture. 
 
-** Courses Part; 
+*Courses Part;* 
 
 - courstime: Timeslot requirement of each lecture. 
 
