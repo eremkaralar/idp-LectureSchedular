@@ -1,33 +1,29 @@
 vocabulary V {
     type AcademicStaff := {Joost,Benjamin,Erem}
     type Lecturemoment := {Monday_morning,Monday_afternoon,Monday_evening,Tuesday_morning,Tuesday_afternoon,Tuesday_evening,Wednesday_morning,Wednesday_afternoon,Wednesday_evening,Thursday_morning,Thursday_afternoon,Thursday_evening,Friday_morning,Friday_afternoon,Friday_evening}
-    type LectureName := {LectureOne,LectureTwo,LectureThree,LectureFour,LectureFive,LectureSix,LectureSeven}
-    type count := {0..6}
+    type LectureName := {LectureOne,LectureTwo,LectureThree}
+    type count := {0..5}
 
     isfree : AcademicStaff*Lecturemoment →𝔹
     sheduled: AcademicStaff*Lecturemoment*LectureName →𝔹
 
     teacher: LectureName →AcademicStaff
-
-
-    timesplanned: LectureName -> count
+    timesplanned: LectureName →count
     courstimes: LectureName →count
 }
 
 theory T:V {
-    ∀l: courstimes(l)>=timesplanned(l).
-    ∀l: courstimes(l)=0 ⇒timesplanned(l)=0.
+    ∀l: courstimes(l)=timesplanned(l).
+
     ∀p,t,l: sheduled(p,t,l) ⇐ isfree(p,t) ∧ teacher(l)=p.
     ∀p,t,l: ¬sheduled(p,t,l) ⇐ ¬isfree(p,t) ∨ ¬(teacher(l)=p).
-    //∀p,t,l,l2: ¬(l=l2)∧sheduled(p,t,l)⇒¬sheduled(p,t,l2).
-    //∀p,p2,t,l,l2:¬(l=l2)∧¬(p=p2)∧ sheduled(p,t,l)⇒¬sheduled(p2,t,l2).
-    #{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,LectureOne) } =timesplanned(LectureOne).
-    #{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,LectureTwo) } =timesplanned(LectureTwo).
-    #{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,LectureThree) } =timesplanned(LectureThree).
-    #{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,LectureFour) } =timesplanned(LectureFour).
-    #{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,LectureFive) } =timesplanned(LectureFive).
-    #{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,LectureSix) } =timesplanned(LectureSix).
-    #{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,LectureSeven) } =timesplanned(LectureSeven).
+
+    ∀l in LectureName:#{ p in AcademicStaff,t in Lecturemoment : sheduled(p,t,l) } =timesplanned(l).
+    
+    ∀p,p2,t,l,l2: ¬sheduled(p,t,l) ⇐ sheduled(p2,t,l2) ∧ ¬(p=p2).
+
+    ∀p in AcademicStaff,l,l2 in LectureName: teacher(l)=p ∧¬(l=l2) ⇒¬(teacher(l2)=p).
+
 }
 
 structure S:V {
@@ -36,5 +32,6 @@ structure S:V {
 display { 
     heading('Possible_working_moments', `isfree, `courstimes, `teacher).
     heading('Sheduling_table', `sheduled).
+    hide(`timesplanned).
     view() = expanded.
 }
