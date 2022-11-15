@@ -14,12 +14,16 @@ Good & Bad Situations
 Bad Situations: 
 
 Lecture Program overlaps. 
+
 One academic staff gives lecture all day (exhaustingly). 
+
 Contradicted constraints occur. 
+
 
 Good Situations: 
 
 All the lectures and all the staff have been matched correctly according to constraints. 
+
 All limitations about lectures and staff are sorted.  
 
 Domain Knowledge 
