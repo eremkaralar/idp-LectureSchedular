@@ -4,7 +4,7 @@
 
 This report aims to explain the project which was assigned for Applied AI: Academic Perspectives lecture, module of Applied Knowledge Representation. In the scope of the project, the team planned to realize a lecture scheduler. Via IDP and FO(.) language, knowledge representation of example lecture scheduling has been explained and coded logically. 
 
-##Situation 
+## Situation 
 
 In the example used, there are 3 lectures and 3 academic staff who are responsible for those lectures. According to Belgian worker law, there are 5 business days and 3 time slots (namely morning, afternoon and evening lectures) that academic staff are able to teach their lectures. Each lecture has their own course time indicating how many time slots that a lecture needs to be taught. (I.e.: Lecture2 can have 2 slots needed to be given on Monday morning and Tuesday evening or on Friday evening and Thursday evening). With given all the lectures and academic staffs, there are lectures, time slots and academic staff to be chosen. 
 
